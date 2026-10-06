@@ -26,13 +26,14 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'agroconnectlogin.dart';
 
 void main() {
-  runApp(const AgroConnectApp());
+  runApp(const AgroApp());
 }
 
-class AgroConnectApp extends StatelessWidget {
-  const AgroConnectApp({super.key});
+class AgroApp extends StatelessWidget {
+  const AgroApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -231,17 +232,11 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen>
   void _selectRole(String role) {
     HapticFeedback.selectionClick();
     setState(() => _selectedRole = role);
-    // Simulate navigation delay so the selection animation is visible
     Future.delayed(const Duration(milliseconds: 260), () {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Continuing as $role...'),
-          duration: const Duration(milliseconds: 900),
-          behavior: SnackBarBehavior.floating,
-          backgroundColor: role == 'Farmer'
-              ? const Color(0xFF2E7D32)
-              : const Color(0xFF1565C0),
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const agrologin(),
         ),
       );
     });
@@ -470,9 +465,9 @@ class _AnimatedSkyBackground extends StatelessWidget {
 class _HillsPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final backHill = Paint()..color = const Color(0xFFCFE8CF).withOpacity(0.6);
-    final midHill = Paint()..color = const Color(0xFFBBDFBB).withOpacity(0.7);
-    final frontHill = Paint()..color = const Color(0xFFA9D6A9).withOpacity(0.8);
+    final backHill = Paint()..color = const Color(0xFFCFE8CF).withValues(alpha: 0.6);
+    final midHill = Paint()..color = const Color(0xFFBBDFBB).withValues(alpha: 0.7);
+    final frontHill = Paint()..color = const Color(0xFFA9D6A9).withValues(alpha: 0.8);
 
     Path buildHill(double heightFactor, double phase) {
       final path = Path();
@@ -660,12 +655,12 @@ class _RoleCardState extends State<_RoleCard> with SingleTickerProviderStateMixi
             border: Border.all(
               color: widget.isSelected
                   ? widget.accentColor
-                  : widget.accentColor.withOpacity(0.35),
+                  : widget.accentColor.withValues(alpha: 0.35),
               width: widget.isSelected ? 2.4 : 1.4,
             ),
             boxShadow: [
               BoxShadow(
-                color: widget.accentColor.withOpacity(widget.isSelected ? 0.25 : 0.08),
+                color: widget.accentColor.withValues(alpha: widget.isSelected ? 0.25 : 0.08),
                 blurRadius: widget.isSelected ? 18 : 8,
                 offset: const Offset(0, 6),
               ),
@@ -681,8 +676,8 @@ class _RoleCardState extends State<_RoleCard> with SingleTickerProviderStateMixi
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
                     colors: [
-                      widget.accentColor.withOpacity(0.15),
-                      widget.accentColor.withOpacity(0.35),
+                      widget.accentColor.withValues(alpha: 0.15),
+                      widget.accentColor.withValues(alpha: 0.35),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -747,7 +742,7 @@ class _ArrowButton extends StatelessWidget {
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: color.withOpacity(0.4),
+            color: color.withValues(alpha: 0.4),
             blurRadius: 8,
             offset: const Offset(0, 3),
           ),

@@ -1,16 +1,15 @@
-import 'dart:ui';
 
+//import 'package:agroconnect_ai/AiCropDoctorScreen.dart';
 import 'package:flutter/material.dart';
-import 'splash_screen.dart';
-import 'agroconnect_onboarding.dart';
 //import 'farmer_login_screen.dart';
-import 'agroconnectlogin.dart';
+import 'ai_chat_page.dart';
+import 'ai_voice_page.dart';  
 
 void main() {
   runApp(const AgroConnectApp());
 }
 
-/// Root app widget.
+/// Root app widget.ollama --version
 /// Theme colors are pulled straight from the AgroConnect AI brand:
 /// deep green (#1F5B3A-ish) for primary, soft sky gradient for backgrounds.
 class AgroConnectApp extends StatelessWidget {
@@ -48,7 +47,20 @@ class AgroConnectApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const FarmerLoginScreen(),
+     // home: const FarmFreshApp(),
+    // home: const FarmConnectApp(),
+   // home:const ScannerScreen(),
+   //home:const HomePage(),
+   //home:const HomeScreen(),
+  //home: const SplashScreen(),
+ // home: const AgroConnectApp(),
+ //home: const FarmConnectApp(),
+ //home: const AgroApp(),
+// home:const agrologin(),
+//home:const ProductsScreen(),
+//home :const CropRecommendationPage(),
+ // home: const AIChatPage(),
+ home:const AIVoicePage(),
     );
   }
 }

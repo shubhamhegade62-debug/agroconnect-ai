@@ -13,9 +13,11 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_tts: ^4.2.5
+  http: ^1.6.0
   image: ^4.9.2
   image_picker: ^1.2.3
-  tflite_flutter: ^0.12.1
+  speech_to_text: ^7.5.0
 
 dev_dependencies:
   flutter_test:

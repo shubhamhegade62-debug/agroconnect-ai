@@ -46,3 +46,18 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# AgroConnect Python and ML
+.venv/
+**/.venv/
+venv/
+**/venv/
+__pycache__/
+**/__pycache__/
+dataset/
+**/dataset/
+*.keras
+*.h5
+*.pkl
+.env
+*.env
